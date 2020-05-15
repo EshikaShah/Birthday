@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">  
+    <style>
+        body{
+            background: #fc00ff;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #00dbde, #fc00ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .input-group.input-group-lg{
+            padding-top: 20vh;
+        }
+        .text-center h1{
+            font-family: 'Anton', sans-serif;
+        }
+        .container .text-center{
+            padding-top: 10vh;
+            color: white;  
+        }
+        .btn{
+            margin: 5%;
+            padding: 10px 50px;
+        }
+        
+        .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        }
+
+        #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+        }
+
+        .modal-content, #caption {  
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)} 
+        to {-webkit-transform:scale(1)}
+        }
+
+        @keyframes zoom {
+        from {transform:scale(0)} 
+        to {transform:scale(1)}
+        }
+
+        .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+        }
+
+        @media only screen and (max-width: 700px){
+        .modal-content {
+            width: 100%;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h1>
+                Happy Birthday
+            </h1>
+            <h5>
+                to the best Pappa in the world
+            </h5>
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-lg">Name</span>
+                </div>
+                <input type="text" class="form-control data" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            </div>
+            <button type="button" class="btn btn-primary btn-lg">View</button>
+        </div>
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    //data goes here fill the data in the format :
+    var sources = {
+        Error: {
+            url: "https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png",
+            caption:"Please Try another Name"
+        },
+        //data entry starts here
+        Aarav: {
+            url:  "images/aarav.jpeg",
+            caption: "Aarav"
+            },
+        Aesha: {
+            url: "images/aesha.jpeg",
+            caption: "Aesha"
+        },
+        Avani: {
+            url: "images/avani.jpeg",
+            caption: "Avani"
+        },
+        Bhairavi: {
+            url: "images/bhairavi.jpeg",
+            caption: "Bhairavi"
+        },
+        Bhupendrabhai: {
+            url: "images/bhupendrabhai.jpeg",
+            caption: "Bhupendrabhai"
+        },
+        Boski: {
+            url: "images/boski.jpeg",
+            caption: "Boski"
+        },
+        Dhaval: {
+            url: "images/dhaval.jpeg",
+            caption: "Dhaval"
+        },
+        Diya: {
+            url: "images/diya.jpeg",
+            caption: "Diya"
+        },
+        Dhiyan: {
+            url: "images/dhiyan.jpeg",
+            caption: "Dhiyan"
+        },
+        Heer: {
+            url: "images/heer.jpeg",
+            caption: "Heer"
+        },
+        Hiral: {
+            url: "images/Hiral.jpeg",
+            caption: "Hiral"
+        },
+        Hitesh: {
+            url: "images/hitesh.jpeg",
+            caption: "Hitesh"
+        },
+        Jatin: {
+            url: "images/jatin.jpeg",
+            caption: "Jatin"
+        },
+        Ketanbhai: {
+            url: "images/Ketanbhai.jpeg",
+            caption: "Ketanbhai"
+        },
+        MehulB: {
+            url: "images/MehulB.jpeg",
+            caption: "Mehul B"
+        },
+        Mehul: {
+            url: "images/mehul.jpeg",
+            caption: "Mehul"
+        },
+        Milan: {
+            url: "images/milan.jpeg",
+            caption: "Milan"
+        },
+        Nimesh: {
+            url: "images/nimesh.jpeg",
+            caption: "Nimesh"
+        },
+        Nimish: {
+            url: "images/nimish.jpeg",
+            caption: "Nimish"
+        },
+        Nishil: {
+            url: "images/nishil.jpeg",
+            caption: "Nishil"
+        },
+        Payal: {
+            url: "images/payal.jpeg",
+            caption: "Payal"
+        },
+        Pravinaben: {
+            url: "images/pravinaben.jpeg",
+            caption: "Pravinaben"
+        },
+        Rakesh: {
+            url: "images/rakesh.jpeg",
+            caption: "Rakesh"
+        },
+        Saurabh: {
+            url: "images/saurabh.jpeg",
+            caption: "Saurabh"
+        },
+        Sonia: {
+            url: "images/sonia.jpeg",
+            caption: "Sonia"
+        },
+        Vijay: {
+            url: "images/vijay.jpeg",
+            caption: "Vijay"
+        },
+    }
+
+
+    //code
+    button = document.querySelector('.btn')
+    data = document.querySelector('.data')
+    var modal = document.getElementById("myModal");
+
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    button.onclick = function(){
+        modal.style.display = "block";
+        if (sources[data.value]){
+            modalImg.src = sources[data.value].url;
+            captionText.innerHTML = sources[data.value].caption;
+        }
+        else{
+            modalImg.src = sources.Error.url;
+            captionText.innerHTML = sources.Error.caption;
+        }
+    
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() { 
+    modal.style.display = "none";
+    }
+</script>
+</html>
